@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Todo List</title>
+</head>
+<body>
+    <h2>Todos</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Body</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @tasks.each do |task| %>
+            <tr>
+                <td><%= task.title %></td>
+                <td><%= task.body %></td>
+                <td><%= link_to 'Show', task_path(task) %></td>
+                <td><%= link_to 'Edit', edit_task_path(task) %></td>
+                <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+    <%= link_to "New todo", new_task_path %>
+
+</body>
+</html>
